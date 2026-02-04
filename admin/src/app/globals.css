@@ -1,0 +1,134 @@
+:root {
+  /* Authority / Admin Palette */
+  --primary-color: #0d47a1;
+  /* Official Blue */
+  --primary-light: #1976d2;
+  /* Standard Blue */
+  --primary-dark: #002171;
+  /* Deep Navy */
+
+  --secondary-color: #546e7a;
+  /* Blue Grey */
+  --risk-high: #d32f2f;
+  /* Alert Red */
+  --risk-med: #f57c00;
+  /* Warning Orange */
+  --risk-low: #388e3c;
+  /* Safe Green */
+
+  --bg-color: #f5f7fa;
+  /* Light Grey-Blue */
+  --surface-color: #ffffff;
+
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  --font-main: 'Inter', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-color);
+  color: #333;
+}
+
+h1,
+h2,
+h3 {
+  color: var(--primary-dark);
+}
+
+.admin-header {
+  background: white;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.logo {
+  font-weight: 700;
+  color: var(--primary-dark);
+  font-size: 1.2rem;
+}
+
+.main-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.card {
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  border: 1px solid #eee;
+}
+
+.risk-badge {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.risk-badge.high {
+  background: var(--risk-high);
+}
+
+.risk-badge.med {
+  background: var(--risk-med);
+}
+
+.risk-badge.low {
+  background: var(--risk-low);
+}
+
+.risk-badge.none {
+  background: #999;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background: var(--primary-light);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--primary-color);
+}

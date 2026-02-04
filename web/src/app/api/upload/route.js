@@ -1,0 +1,39 @@
+import { writeFile } from 'fs/promises';
+import { join } from 'path';
+import { NextResponse } from 'next/server';
+
+export const dynamic = 'force-dynamic';
+
+export async function POST(request) {
+    try {
+        const data = await request.formData();
+        const file = data.get('file');
+
+        if (!file) {
+            return NextResponse.json({ success: false, error: "No file uploaded" });
+        }
+
+        const bytes = await file.arrayBuffer();
+        const buffer = Buffer.from(bytes);
+
+        // Create a unique filename
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const filename = uniqueSuffix + '-' + file.name.replace(/[^a-zA-Z0-9.-]/g, '');
+
+        // Save to public/uploads
+        const uploadDir = join(process.cwd(), 'public', 'uploads');
+        const path = join(uploadDir, filename);
+
+        await writeFile(path, buffer);
+
+        // Return relative URL
+        return NextResponse.json({
+            success: true,
+            url: `/uploads/${filename}`
+        });
+
+    } catch (error) {
+        console.error("Upload Error:", error);
+        return NextResponse.json({ success: false, error: "Upload failed" });
+    }
+}
